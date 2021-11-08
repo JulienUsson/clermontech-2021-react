@@ -1,10 +1,252 @@
-import { Footer } from 'mdx-deck'
-import customTheme  from './theme'
+import { Footer, Steps, Title, Image } from "mdx-deck";
+import Question from "./Question";
+import customTheme from "./theme";
 
-export const theme = customTheme 
+export const theme = customTheme;
 
-<Footer>23/11/2021 - Clermont'ech - Julien Usson - Easymov Robotics</Footer>
+<Footer>Clermont'ech - 23/11/2021 - Julien Usson - Easymov Robotics</Footer>
 
-# Introduction à React
+# React under the hoo~~d~~k
 
 ---
+
+## React ?
+
+<Steps>
+
+- Framework frontend (light)
+- Open Source
+- Facebook
+- "Most Wanted" framework web<br/>_(Stackoverflow Survey 2021)_
+
+</Steps>
+
+---
+
+<Question>Et à quoi ça ressemble ce truc ?</Question>
+
+---
+
+import HelloWorld from "./examples/HelloWorld";
+
+## Hello world
+
+```javascript
+// src/foo.js
+const element = React.createElement(
+  "h1",
+  { className: "greeting" }, // class est un mot clé réservé...
+  "Hello, world!"
+);
+
+ReactDOM.render(element, document.getElementById("root"));
+```
+
+<HelloWorld />
+
+<Steps>
+
+Un problème : c'est pas très lisible...
+
+</Steps>
+
+---
+
+## Mais heureusement, il y a JSX
+
+```javascript
+// src/foo.jsx
+const element = <h1 className="greeting">Hello, world!</h1>;
+
+ReactDOM.render(element, document.getElementById("root"));
+```
+
+<HelloWorld />
+
+---
+
+<Question>
+  Ok c'est bien mais avec ton exemple on peut pas faire grand chose...
+</Question>
+
+---
+
+import Counter from "./examples/Counter";
+
+## Notre premier composant
+
+```javascript
+function Counter(props) {
+  const [counter, setCounter] = React.useState(0);
+
+  function handleClick(event) {
+    setCounter(counter + 1);
+  }
+
+  return (
+    <div>
+      Hello {props.name}, you clicked {counter} times
+      <button onClick={handleClick}>click</button>
+      {counter > 5 ? <b>Calm down !</b> : null}
+    </div>
+  );
+}
+```
+
+<Counter name="Foo" />
+
+---
+
+<Question>Comment React sait qu'il faut mettre à jour le composant ?</Question>
+
+---
+
+import { ComponentA } from "./examples/Render";
+
+## React rerender si...
+
+- Le _state_ a changé (_shallow equal_)
+- le parent s'est _rerender_
+
+<ComponentA />
+
+---
+
+## ...mais c'est pas grave car...
+
+<Steps>
+
+- "Premature optimization is the root of all evil"
+- _Virtual DOM_
+- La mémoïsation
+
+</Steps>
+
+---
+
+<Question>La mémoquoi ?</Question>
+
+---
+
+import { ComponentMemoA } from "./examples/RenderMemo";
+
+### React.memo
+
+```javascript
+const MyComponentMemo = React.memo(MyComponent);
+// Rerender ssi ses propriétés ou son state changent.
+```
+
+<ComponentMemoA />
+
+---
+
+### useMemo()
+
+```javascript
+function MyComponent({ a, b, c }: props) {
+  const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+
+  return (
+    <div>
+      {memoizedValue} {c}
+    </div>
+  );
+}
+```
+
+---
+
+<Question>Tu peux nous en dire plus sur les hooks ?</Question>
+
+---
+
+import hooksTreeImg from "./hooks-tree.png";
+
+## Les trois commandements des hooks
+
+<ul>
+  <Steps>
+    <li>Tu devras commencer par le prefix `use` (useState, useMemo, ...) !</li>
+    <li>
+      Tu ne devras pas être utilisé en dehors d'un composant (ou d'un custom
+      hook) !
+    </li>
+    <div>
+      <li>
+        Tu devras être utilisé dans le <i>top level</i> de la fonction (l'odre
+        est important) !
+      </li>
+      <img
+        src={hooksTreeImg}
+        style={{
+          height: "400px",
+          width: "auto",
+          display: "block",
+          margin: "auto",
+          marginTop: "16px",
+        }}
+      />
+    </div>
+  </Steps>
+</ul>
+
+---
+
+## Les custom hooks
+
+```javascript
+function useAuth() {
+  const [user, setUser] = useState(null);
+
+  // some black magic...
+
+  return user;
+}
+```
+
+<Steps>
+
+useYourImagination()
+
+</Steps>
+
+---
+
+## React n'est pas un framework web...
+
+<Steps>
+
+<div>
+  Tout dépend du renderer utilisé :
+  <ul>
+    <li>React dom</li>
+    <li>React native</li>
+    <li>React remotion</li>
+    <li>Ink</li>
+    <li>React nil</li>
+    <li>...</li>
+  </ul>
+</div>
+
+</Steps>
+
+---
+
+## Il reste encore plein de choses à voir :
+
+- useEffect, useCallback, useReducer, ...
+- Contexts
+- Refs
+- Suspense
+- ...
+
+<Steps>
+
+Mais ça sera pour une prochaine fois !
+
+</Steps>
+
+---
+
+### Merci, des questions ?

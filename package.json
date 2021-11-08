@@ -4,7 +4,8 @@
   "description": "A react presentation for Clermont'ech 2021.",
   "main": "slides.mdx",
   "scripts": {
-    "start": "mdx-deck slides.mdx -p 3000"
+    "start": "mdx-deck slides.mdx -p 3000",
+    "build": "mdx-deck build slides.mdx"
   },
   "author": "Julien Usson",
   "license": "GPL-3.0-or-later",
