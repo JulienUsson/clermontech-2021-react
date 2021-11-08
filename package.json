@@ -1,0 +1,14 @@
+{
+  "name": "clermontech-2021-react",
+  "version": "1.0.0",
+  "description": "A react presentation for Clermont'ech 2021.",
+  "main": "slides.mdx",
+  "scripts": {
+    "start": "mdx-deck slides.mdx -p 3000"
+  },
+  "author": "Julien Usson",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "mdx-deck": "^4.1.1"
+  }
+}
