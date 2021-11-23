@@ -128,6 +128,19 @@ import { ComponentA } from "./examples/Render";
 
 ---
 
+### La mémoisation
+
+```
+fonction memo(f)
+  h = une table de hachage
+  renvoyer une fonction définie par fonction(x) 
+    si h[x] n'est pas défini
+      h[x] := f(x)
+    retourner h[x]
+```
+
+---
+
 import { ComponentMemoA } from "./examples/RenderMemo";
 
 ### React.memo
@@ -174,7 +187,7 @@ import hooksTreeImg from "./hooks-tree.png";
     </li>
     <div>
       <li>
-        Tu devras être utilisé dans le <i>top level</i> de la fonction (l'odre
+        Tu devras être utilisé dans le <i>top level</i> de la fonction (l'ordre
         est important) !
       </li>
       <img
