@@ -14,9 +14,10 @@ export const theme = customTheme;
 
 <Steps>
 
-- Framework frontend (light)
-- Open Source
+- Framework|library frontend
 - Facebook
+- Inspiré par XHP
+- Open Source (MIT)
 - "Most Wanted" framework web<br/>_(Stackoverflow Survey 2021)_
 
 </Steps>
@@ -52,7 +53,7 @@ Un problème : c'est pas très lisible...
 
 ---
 
-## Mais heureusement, il y a JSX
+## Heureusement, il y a JSX
 
 ```javascript
 // src/foo.jsx
@@ -76,6 +77,7 @@ import Counter from "./examples/Counter";
 ## Notre premier composant
 
 ```javascript
+// <Counter name="Foo" />
 function Counter(props) {
   const [counter, setCounter] = React.useState(0);
 
@@ -133,11 +135,13 @@ import { ComponentA } from "./examples/Render";
 ```
 fonction memo(f)
   h = une table de hachage
-  renvoyer une fonction définie par fonction(x) 
+  retourner fonction(x) 
     si h[x] n'est pas défini
       h[x] := f(x)
     retourner h[x]
 ```
+
+⚠️ La fonction doit être pure !
 
 ---
 
@@ -216,6 +220,7 @@ function useAuth() {
 
   return user;
 }
+// const currentUser = useAuth()
 ```
 
 <Steps>
